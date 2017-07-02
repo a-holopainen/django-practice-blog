@@ -1,0 +1,91 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <p>So basically this is a practice blog to try out cool front-end stuff.</p>
+    </div>
+    <div>
+        <a href="post_list">Check out the blog posts I already created here!</a>
+    </div>
+</div>
+
+<div class="container">
+    <h3>Image Gallery</h3>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/fuessen.jpg' %}" alt="Füssen" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/bremen.jpg' %}" alt="Bremen" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/stockholm.jpg' %}" alt="Stockholm" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/juist.jpg' %}" alt="Juist" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/paris.jpg' %}" alt="Paris" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/reykjavik.jpg' %}" alt="Reykjavik" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/berlin.jpg' %}" alt="Berlin" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <img src="{% static 'img/helsinki.jpg' %}" alt="Helsinki" style="width:100%">
+                <div class="caption">
+                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

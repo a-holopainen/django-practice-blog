@@ -1,10 +1,10 @@
-<html>
 {% load staticfiles %}
+<html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Anni's practice blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
@@ -16,11 +16,11 @@
             {% else %}
                 <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
             {% endif %}
-            <h1><a href="/">Django Girls Blog</a></h1>
+            <h1><a href="/">Anni's practice blog</a></h1>
         </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <div>
+            <div>
+                <div class="col-md-12">
                 {% block content %}
                 {% endblock %}
                 </div>
