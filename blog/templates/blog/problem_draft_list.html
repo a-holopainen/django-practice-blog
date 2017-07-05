@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for problem in problems %}
+        <div class="problem">
+            <p class="date">created: {{ problem.created_date|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h1>
+            <p>{{ problem.text|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

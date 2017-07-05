@@ -1,64 +1,71 @@
-from django.shortcuts import render
 from django.utils import timezone
-from .models import Post
+from .models import Problem
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import ProblemForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def index(request):
     return render(request, 'blog/index.html')
 
-def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
 
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+def problem_list(request):
+    problems = Problem.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/problem_list.html', {'problems': problems})
+
+
+def problem_detail(request, pk):
+    problem = get_object_or_404(Problem, pk=pk)
+    return render(request, 'blog/problem_detail.html', {'problem': problem})
+
 
 @login_required
-def post_new(request):
+def problem_new(request):
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = ProblemForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('post_detail', pk=post.pk)
+            problem = form.save(commit=False)
+            problem.builder = request.user
+            problem.save()
+            return redirect('problem_detail', pk=problem.pk)
     else:
-        form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
+        form = ProblemForm()
+    return render(request, 'blog/problem_edit.html', {'form': form})
+
 
 @login_required
-def post_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def problem_edit(request, pk):
+    problem = get_object_or_404(Problem, pk=pk)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = ProblemForm(request.POST, instance=problem)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect('post_detail', pk=post.pk)
+            problem = form.save(commit=False)
+            problem.builder = request.user
+            problem.save()
+            return redirect('problem_detail', pk=problem.pk)
     else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})
+        form = ProblemForm(instance=problem)
+    return render(request, 'blog/problem_edit.html', {'form': form})
+
 
 @login_required
-def post_draft_list(request):
-    posts = Post.objects.filter(published_date__isnull=True).order_by('created_date')
-    return render(request, 'blog/post_draft_list.html', {'posts': posts})
+def problem_draft_list(request):
+    problems = Problem.objects.filter(published_date__isnull=True).order_by('created_date')
+    return render(request, 'blog/problem_draft_list.html', {'problems': problems})
+
 
 @login_required
-def post_publish(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    post.publish()
-    return redirect('post_detail', pk=pk)
+def problem_publish(request, pk):
+    problem = get_object_or_404(Problem, pk=pk)
+    problem.publish()
+    return redirect('problem_detail', pk=pk)
+
 
 @login_required
-def post_remove(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    post.delete()
+def problem_remove(request, pk):
+    problem = get_object_or_404(Problem, pk=pk)
+    problem.delete()
     return redirect('post_list')

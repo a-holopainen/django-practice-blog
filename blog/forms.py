@@ -1,9 +1,10 @@
 from django import forms
 
-from .models import Post
+from .models import Problem
 
-class PostForm(forms.ModelForm):
+
+class ProblemForm(forms.ModelForm):
 
     class Meta:
-        model = Post
+        model = Problem
         fields = ('title', 'text',)

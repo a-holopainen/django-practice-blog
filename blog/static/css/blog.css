@@ -1,5 +1,5 @@
 .page-header {
-    background-color: #000000;
+    background-color: #222323;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -28,7 +28,7 @@ h1, h2, h3, h4 {
     float: right;
 }
 
-.post-form textarea, .post-form input {
+.problem-form textarea, .problem-form input {
     width: 100%;
 }
 
@@ -36,13 +36,14 @@ h1, h2, h3, h4 {
     color: #ffffff;
     float: right;
     font-size: 26pt;
-    margin-right: 20px;
+    margin-right: 5%;
+    margin-bottom: 5px;
 }
 
-.post {
+.problem {
     margin-bottom: 70px;
 }
 
-.post h1 a, .post h1 a:visited {
+.problem h1 a, .problem h1 a:visited {
     color: #000000;
 }

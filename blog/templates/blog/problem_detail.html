@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="problem">
+        {% if problem.published_date %}
+        <div class="date">
+            {{ problem.published_date }}
+        </div>
+        {% else %}
+            <a class="btn btn-default" href="{% url 'problem_publish' pk=problem.pk %}">Publish</a>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'problem_edit' pk=problem.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'problem_remove' pk=problem.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+        {% endif %}
+
+        <h1>{{ problem.title }}</h1>
+        <p>{{ problem.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}

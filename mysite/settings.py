@@ -14,7 +14,6 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print BASE_DIR
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +23,7 @@ print BASE_DIR
 SECRET_KEY = 'zz08rsk!a3j8=jn$rgs@4om5kgusk(1oby2n(d0w&^r+t-t8n$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
@@ -121,12 +120,7 @@ LOGIN_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-print STATIC_ROOT
+
 #
-# STATIC_ROOT = ''
-#
-# STATIC_URL = '/static/'
-#
-# STATICFILES_DIRS = ( os.path.join('static'), )
 
 
