@@ -3,11 +3,11 @@
 {% block content %}
     {% for problem in problems %}
     <div class="problem">
+        <h1><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h1>
+        <p>{{ problem.text|linebreaksbr }}</p>
         <div class="date">
             <p>published: {{ problem.published_date }}</p>
         </div>
-        <h1><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h1>
-        <p>{{ problem.text|linebreaksbr }}</p>
     </div>
     {% endfor %}
 {% endblock %}

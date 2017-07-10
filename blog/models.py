@@ -59,6 +59,7 @@ class Problem(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     expected_expiry_date = models.DateTimeField(default=datetime.datetime.now() + datetime.timedelta(days=35))
     actual_expiry_date = models.DateTimeField(blank=True, null=True)
+    problem_img = models.ImageField(upload_to='img/problem_img/%Y/%m/', blank=True)
 
     def publish(self):
         self.published_date = timezone.now()

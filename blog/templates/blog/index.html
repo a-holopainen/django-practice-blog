@@ -2,89 +2,42 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="container">
-    <div>
-        <p>So basically this is a practice blog to try out cool front-end stuff.</p>
-    </div>
-    <div>
-        <a href="problem_list">Check out the blog posts I already created here!</a>
+
+<div class="container" style="padding:0px">
+    <div class="row" style="margin: 0 auto">
+        <div class="col-xs-12">
+            <img src="{% static 'img/babykoala.png' %}" class="img-responsive main" alt="koala_title">
+        </div>
     </div>
 </div>
+
 <div class="container">
-    <h3>Image Gallery</h3>
+    <div class="row" style="margin: 0 auto">
+        <div class="col-xs-12 blog-entry">
+            <p>This is the main description for this app. Some general bla bla bla for the start page. Below you see all
+            available problems. To check out problems that we already tore down click HERE. If you want to see if we
+            already have something under construction, click HERE.
+            </p>
+        </div>
+    </div>
+</div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/fuessen.jpg' %}" alt="Füssen" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
+<div class="container">
+    <div class="row" style="margin: 0 auto">
+    {% for problem in problems %}
+        <div class="col-md-4 col-xs-12 blog-entry">
+
+            <h2><a href="{% url 'problem_detail' pk=problem.pk %}">{{ problem.title }}</a></h2>
+            <p>{{ problem.text|linebreaksbr }}</p>
+            <div class="crop">
+                <img src="media/{{problem.problem_img}}" class="img-responsive" alt="picture of the problem">
+            </div>
+            <div class="date">
+                <p>published: {{ problem.published_date }}</p>
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/bremen.jpg' %}" alt="Bremen" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/stockholm.jpg' %}" alt="Stockholm" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/juist.jpg' %}" alt="Juist" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/paris.jpg' %}" alt="Paris" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/reykjavik.jpg' %}" alt="Reykjavik" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/berlin.jpg' %}" alt="Berlin" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="thumbnail">
-                <img src="{% static 'img/helsinki.jpg' %}" alt="Helsinki" style="width:100%">
-                <div class="caption">
-                    <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
-                </div>
-            </div>
-        </div>
+    {% endfor %}
     </div>
 </div>
 {% endblock %}
+

@@ -15,7 +15,18 @@
             <a class="btn btn-default" href="{% url 'problem_remove' pk=problem.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         {% endif %}
 
-        <h1>{{ problem.title }}</h1>
+        <h2>{{ problem.title }}</h2>
         <p>{{ problem.text|linebreaksbr }}</p>
+        <p>Current status: {{ problem.get_status_display}}</p>
+        <p>How the problem starts: {{ problem.get_start_type_display }}</p>
+        <p>How the problem ends: {{ problem.get_end_type_display }}</p>
+        <p>Grade: {{ problem.get_grade_display }}</p>
+        <p>Color of grips: {{ problem.grip_color }}</p>
+        <div> Picture of the problem:
+            <img src="/media/{{problem.problem_img}}" class="img-responsive" alt="picture of the problem" style="width: 100%">
+        </div>
+        <div class="date">
+            <p>published: {{ problem.published_date }}</p>
+        </div>
     </div>
 {% endblock %}

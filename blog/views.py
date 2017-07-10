@@ -9,12 +9,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    return render(request, 'blog/index.html')
-
-
-def problem_list(request):
-    problems = Problem.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/problem_list.html', {'problems': problems})
+    problems = Problem.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    return render(request, 'blog/index.html', {'problems': problems})
 
 
 def problem_detail(request, pk):
@@ -25,7 +21,7 @@ def problem_detail(request, pk):
 @login_required
 def problem_new(request):
     if request.method == "POST":
-        form = ProblemForm(request.POST)
+        form = ProblemForm(request.POST, request.FILES)
         if form.is_valid():
             problem = form.save(commit=False)
             problem.builder = request.user
